@@ -62,4 +62,22 @@ class ConditionerTest {
         conditioner.setCurrentTemperature(100);
         assertEquals(0, conditioner.getCurrentTemperature());
     }
+    @Test
+    public void currentTemperatureOnLimitNoIncr() {
+        Conditioner conditioner = new Conditioner();
+        conditioner.setMinTemperature(15);
+        conditioner.setMaxTemperature(30);
+        conditioner.setCurrentTemperature(30);
+        conditioner.increaseCurrentTemperature();
+        assertEquals(30, conditioner.getCurrentTemperature());
+    }
+    @Test
+    public void currentTemperatureOnLimitNoDecr() {
+        Conditioner conditioner = new Conditioner();
+        conditioner.setMinTemperature(15);
+        conditioner.setMaxTemperature(30);
+        conditioner.setCurrentTemperature(15);
+        conditioner.decreasedCurrentTemperature();
+        assertEquals(15, conditioner.getCurrentTemperature());
+    }
 }
